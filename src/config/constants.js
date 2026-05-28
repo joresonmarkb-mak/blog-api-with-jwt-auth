@@ -1,0 +1,1 @@
+export const DB_NAME = "blog-api-with-jwt-auth";

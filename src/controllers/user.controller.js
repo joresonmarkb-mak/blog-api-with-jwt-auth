@@ -1,4 +1,5 @@
 import {User} from "../model/user.model.js"
+import jwt from 'jsonwebtoken';
 
 
 const registerUser= async (req, res) => {
@@ -25,6 +26,14 @@ const registerUser= async (req, res) => {
             age:age,
             loggedIn:false
         });
+
+        const token = jwt.sign(
+            {id : user._id},
+            process.env.JWT_SECRET,
+            {expiresIn: '7d'}
+        )
+        
+
         res.status(201).json({
             message:"User registered",
             user: {id: user.id, email: user.email, name:user.name ,age:user.age}
@@ -56,6 +65,13 @@ const loginUser = async (req, res) => {
                 message: "Invalid Credentials"
             });
         }
+
+           const token = jwt.sign(
+            {id : user._id},
+            process.env.JWT_SECRET,
+            {expiresIn: '7d'}
+        );
+         res.json({ token, user: { id: user._id, name: user.name, email: user.email } });
 
         // ✅ no need for else — if we reach here, login succeeded
         res.status(200).json({

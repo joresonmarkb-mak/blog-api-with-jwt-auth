@@ -6,7 +6,11 @@ import postRouter from './routes/post.routes.js'
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: [
+        'http://localhost:5173',
+        'http://your-blog-client.vercel.app'
+    ]
+    
 }));
 
 app.use(express.json());

@@ -1,15 +1,17 @@
 import express from "express";
-
-const app = express();
-
-app.use(express.json());
-
-
+import cors from 'cors';
 import userRouter from './routes/user.routes.js'
 import postRouter from './routes/post.routes.js'
 
+const app = express();
 
-app.use("/api/v1/users",userRouter);
-app.use("/api/v1/posts",postRouter);
+app.use(cors({
+    origin: 'http://localhost:5173',
+}));
+
+app.use(express.json());
+
+app.use("/api/users",userRouter);
+app.use("/api/posts",postRouter);
 
 export default app;

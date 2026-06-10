@@ -6,11 +6,10 @@ import postRouter from './routes/post.routes.js'
 const app = express();
 
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://https://blog-client-livid-sigma.vercel.app/'
-    ]
-    
+  origin: [
+    'http://localhost:5173',
+    'https://blog-client-livid-sigma.vercel.app', 
+  ],
 }));
 
 app.use(express.json());

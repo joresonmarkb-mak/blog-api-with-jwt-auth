@@ -8,7 +8,7 @@ const app = express();
 app.use(cors({
     origin: [
         'http://localhost:5173',
-        'http://your-blog-client.vercel.app'
+        'http://https://blog-client-livid-sigma.vercel.app/'
     ]
     
 }));
